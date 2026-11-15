@@ -1,0 +1,40 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[spanish,es-nodecimaldot]{babel}
+\usepackage[margin=2.2cm]{geometry}
+\usepackage{tabularx,booktabs}
+\usepackage{csquotes}
+\usepackage[backend=biber,style=ieee]{biblatex}
+\usepackage[hidelinks]{hyperref}
+\addbibresource{referencias.bib}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4pt}
+\renewcommand{\arraystretch}{1.14}
+
+\begin{document}
+{\large\bfseries FORM-AC-01\par}
+{\LARGE\bfseries Caída de X del 10 de marzo de 2025\par}
+{Melanie Michelle Muñoz Vera\par}
+
+\section*{Descripción del incidente}
+El 10 de marzo de 2025, X (antes Twitter) sufrió varias interrupciones que dificultaron el acceso a su aplicación móvil y a su sitio web. Cisco ThousandEyes detectó errores al establecer conexiones TCP en varias regiones y observó una pérdida de paquetes compatible con un ataque de denegación de servicio distribuido (DDoS) \cite{hicks-x-2025}. Ese mismo día, Elon Musk atribuyó la interrupción a un ciberataque \cite{chapman-ortutay-x-2025}. El servicio presentó fallos intermitentes durante varias horas. Las fuentes consultadas no permiten fijar una hora de recuperación global \cite[p.~15]{csc-threat-update-2025}.
+
+\section*{Línea de tiempo}
+Horas aproximadas del 10 de marzo en UTC. Las horas de Associated Press se convirtieron desde EDT (UTC$-4$).
+
+\begin{tabularx}{\linewidth}{@{}l>{\raggedright\arraybackslash}X@{}}
+\toprule
+\textbf{Hora (UTC)} & \textbf{Qué ocurrió} \\
+\midrule
+09:45 & ThousandEyes empezó a detectar una caída de disponibilidad y errores de conexión TCP en varias regiones \cite{hicks-x-2025}. \\
+10:00 & Downdetector registró un primer pico de avisos de problemas de acceso, según Associated Press \cite{chapman-ortutay-x-2025}. \\
+14:00 & Se produjo un segundo pico, con más de 40\,000 reportes \cite{chapman-ortutay-x-2025}. \\
+16:00 & Comenzó otro episodio de interrupción sostenida que duró al menos una hora, con mayor afectación en las costas de EE.\,UU., según Associated Press \cite{chapman-ortutay-x-2025}. \\
+\bottomrule
+\end{tabularx}
+
+\section*{Impacto cuantificado}
+Del conjunto de problemas registrados por Downdetector, el 56\,\% correspondió a la aplicación móvil y el 33\,\% al sitio web. El pico superó los 40\,000 reportes. Esa cifra mide avisos enviados al monitor y deja sin determinar el total mundial de personas afectadas. La duración mínima de una hora corresponde al episodio de las 16:00 UTC \cite{chapman-ortutay-x-2025}.
+
+\printbibliography[title={Referencias}]
+\end{document}
