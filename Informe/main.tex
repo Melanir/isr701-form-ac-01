@@ -107,7 +107,7 @@ Como segunda fuente complementaria, Cisco ThousandEyes observó que la disponibi
 
 % ------------------------------------------------------------ 6 (Steven)
 \section{Lecciones aprendidas para el proyecto}
-La Tabla~\ref{tab:lecciones} recoge tres riesgos de nuestro proyecto fin de curso que podrían terminar en una caída parecida, con la medida que incorporaremos en TA-PFC-E1.
+La exposición de los servidores de origen y la saturación observadas en X muestran que una falla de protección en el borde puede dejar inaccesible todo el servicio. A partir de este caso, la Tabla~\ref{tab:lecciones} identifica tres riesgos concretos del proyecto fin de curso y la medida preventiva que el equipo incorporará en TA-PFC-E1.
 
 \begin{table}[H]
   \centering
@@ -118,9 +118,9 @@ La Tabla~\ref{tab:lecciones} recoge tres riesgos de nuestro proyecto fin de curs
     \toprule
     Riesgo & Medida preventiva en TA-PFC-E1 \\
     \midrule
-    El servidor de la API queda con su IP y puerto abiertos a Internet, como los servidores de origen de X. & Publicar solo el proxy inverso y aceptar en la API únicamente el tráfico que viene de él. \\
-    Un solo cliente puede mandar peticiones sin límite y saturar el servicio. & Limitar las peticiones por IP y por usuario en el proxy o en el API gateway. \\
-    Nadie se entera de la caída hasta que los usuarios reclaman, y no hay registro de lo que pasó. & Agregar chequeos de salud, alertas y un registro de incidentes con hora, causa y solución. \\
+    Exposición directa del servidor de la API: su IP y puerto podrían quedar accesibles desde Internet y permitir que el tráfico evada la protección del sistema. & Publicar únicamente el proxy inverso; restringir mediante reglas de red el acceso a la API para que solo acepte tráfico proveniente del proxy. \\
+    Saturación por solicitudes: un cliente o bot podría enviar peticiones sin límite hasta agotar la capacidad de la API. & Configurar límites de solicitudes por IP y por usuario en el proxy inverso o API gateway, y devolver el código HTTP 429 cuando se excedan. \\
+    Detección tardía de fallos: el equipo podría conocer una caída únicamente cuando la reporten los usuarios y no disponer de datos para investigarla. & Incorporar comprobaciones de salud, alertas de disponibilidad y un registro de incidentes que conserve la hora, el componente afectado, la causa y la solución aplicada. \\
     \bottomrule
   \end{tabularx}
 \end{table}
